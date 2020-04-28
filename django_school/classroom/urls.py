@@ -1,10 +1,10 @@
 from django.urls import include, path
 
-from .views import classroom, students, teachers
+from .views import classroom, students, teachers, quizes
 
 urlpatterns = [
     path('', classroom.home, name='home'),
-
+    path('quizes', quizes.QuizViewSet.as_view({'get':'list'})),
     path('students/', include(([
         path('', students.QuizListView.as_view(), name='quiz_list'),
         path('s/', students.StudentList.as_view(), name='student_list'),
